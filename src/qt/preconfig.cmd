@@ -4,9 +4,13 @@ SETLOCAL EnableExtensions EnableDelayedExpansion
 :: Build Qt5
 pushd qtbase
 
+set OPENSSLDIR=c:\Projects\openssl\openssl-1.0.1j
+set PLATFORM=win32-msvc2010
+
 set QT_CONFIG=
 
 set QT_CONFIG=!QT_CONFIG! -%BUILD_TYPE%
+set QT_CONFIG=!QT_CONFIG! -platform %PLATFORM%
 set QT_CONFIG=!QT_CONFIG! -static
 set QT_CONFIG=!QT_CONFIG! -opensource
 set QT_CONFIG=!QT_CONFIG! -confirm-license
@@ -25,6 +29,7 @@ set QT_CONFIG=!QT_CONFIG! -qt-libjpeg
 set QT_CONFIG=!QT_CONFIG! -openssl-linked
 
 call configure.bat !QT_CONFIG!
+
 
 call %MAKE_TOOL% %BUILD_TYPE%
 

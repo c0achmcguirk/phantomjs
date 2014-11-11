@@ -2,6 +2,9 @@
 *.pro.user*
 *.xcodeproj
 Makefile*
+*.stash
+dummy.cpp
+src/qt/qtwebkit/Source/include
 *~
 *.moc
 moc_*

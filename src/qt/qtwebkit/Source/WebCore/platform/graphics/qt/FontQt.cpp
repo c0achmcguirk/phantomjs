@@ -26,6 +26,7 @@
 #include "FontDescription.h"
 #include "FontGlyphs.h"
 #include "FontSelector.h"
+#include "FontPlatformData.h"
 #include "GlyphBuffer.h"
 #include "Gradient.h"
 #include "GraphicsContext.h"
@@ -324,7 +325,9 @@ QFont Font::syntheticFont() const
     QFont f(rawFont.familyName());
     if (rawFont.pixelSize())
         f.setPixelSize(rawFont.pixelSize());
-    f.setWeight(rawFont.weight());
+    //f.setWeight(rawFont.weight());
+    f.setWeight(toQFontWeight(weight()));
+    f.setItalic(italic());
     f.setStyle(rawFont.style());
     if (m_letterSpacing)
         f.setLetterSpacing(QFont::AbsoluteSpacing, m_letterSpacing);
